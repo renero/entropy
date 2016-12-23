@@ -63,14 +63,16 @@ where we want to predict the feature "play". The goal is to determine what is th
 
 To get this table in your spark console:
 
-    val outlook = List("overcast","overcast","overcast","overcast","rainy","rainy","rainy","rainy","rainy","sunny","sunny","sunny","sunny","sunny")
-    val temp = List("cool","hot","hot","mild","cool","mild","cool","mild","mild","hot","hot","mild","cool","mild")
-    val hum = List(0.5,0.9,0.5,0.9,0.5,0.9,0.5,0.9,0.5,0.9,0.9,0.9,0.5,0.5)
-    val windy = List(1,1,1,1,0, 0, 1,1,1,0,0,0,1, 1)
-    val play  = List(1,1,1,1,0, 0, 1,1,1,0,0,0,1, 1)
-    val table = sc.parallelize(outlook.zip(temp).zip(hum).zip(windy).zip(play).map {
-      case ((((col1, col2), col3), col4), col5) => (col1,col2,col3,col4,col5)
-    }).toDF("outlook","temperature","humidity","windy","play")
+```scala
+val outlook = List("overcast","overcast","overcast","overcast","rainy","rainy","rainy","rainy","rainy","sunny","sunny","sunny","sunny","sunny")
+val temp = List("cool","hot","hot","mild","cool","mild","cool","mild","mild","hot","hot","mild","cool","mild")
+val hum = List(0.5,0.9,0.5,0.9,0.5,0.9,0.5,0.9,0.5,0.9,0.9,0.9,0.5,0.5)
+val windy = List(1,1,1,1,0, 0, 1,1,1,0,0,0,1, 1)
+val play  = List(1,1,1,1,0, 0, 1,1,1,0,0,0,1, 1)
+val table = sc.parallelize(outlook.zip(temp).zip(hum).zip(wind**y).zip(play).map {
+  case ((((col1, col2), col3), col4), col5) => (col1,col2,col3,col4,col5)
+}).toDF("outlook","temperature","humidity","windy","play")
+```
 
 The result:
 
@@ -87,5 +89,16 @@ The result:
 
 This is the result of a one-shot. The code to extract partial values from a DataFrame is ... well... I don't like it, though it works. Any suggestion is welcome to continue improving this.
 
-Need tro check the relationship between MRI and feature importance, as computed in this example: https://www.kaggle.com/monkeydunkey/d/uciml/mushroom-classification/a-comparison-of-few-ml-models
+Need tro check the relationship between MRI and feature importance, as computed in [this example from kaggle](https://www.kaggle.com/monkeydunkey/d/uciml/mushroom-classification/a-comparison-of-few-ml-models).
 
+The MRI values are like
+
+<center>
+<img src="./src/main/resources/mri.png">
+</center>
+ 
+and the feature importance is:
+
+<center>
+<img src=https://www.kaggle.io/svf/538029/4a0d0537adde7f7104ee1e7e6dcc0d8d/__results___files/__results___4_0.png>
+</center>
