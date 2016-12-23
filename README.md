@@ -86,3 +86,6 @@ The result:
 ## Disclaimer
 
 This is the result of a one-shot. The code to extract partial values from a DataFrame is ... well... I don't like it, though it works. Any suggestion is welcome to continue improving this.
+
+Need tro check the relationship between MRI and feature importance, as computed in this example: https://www.kaggle.com/monkeydunkey/d/uciml/mushroom-classification/a-comparison-of-few-ml-models
+
