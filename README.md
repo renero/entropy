@@ -11,17 +11,19 @@ To use the library, simply,
 
 and from there:
 
-    import org.renero
-    val H = new Entropy(spark, myDataFrame)
+```scala
+import org.renero
+val H = new Entropy(spark, myDataFrame)
     
-    // To compute the entropy of a given column: H(X)
-    H.entropy("columnName")
+// To compute the entropy of a given column: H(X)
+H.entropy("columnName")
     
-    // To compute the conditional entropy of two columns, H(Y|X)
-    H.conditionalEntropy("YcolumnName", "XcolumnName")
+// To compute the conditional entropy of two columns, H(Y|X)
+H.conditionalEntropy("YcolumnName", "XcolumnName")
     
-    // To compute the mutual relative information of mRI(Y|X)
-    H.mRI("YcolumnName", "XcolumnName")
+// To compute the mutual relative information of mRI(Y|X)
+H.mRI("YcolumnName", "XcolumnName")
+```
     
 and that's it.
 The **entropy** $H(U)$ quantifies the uncertainty about an observation.
@@ -76,14 +78,16 @@ val table = sc.parallelize(outlook.zip(temp).zip(hum).zip(wind**y).zip(play).map
 
 The result:
 
-    scala> H.entropy("play")
-    res0: Double = 0.9402859586706309
+```scala
+scala> H.entropy("play")
+res0: Double = 0.9402859586706309
     
-    scala> H.conditionalEntropy("play", "outlook")
-    res1: Double = 1.330656463077906
+scala> H.conditionalEntropy("play", "outlook")
+res1: Double = 1.330656463077906
     
-    scala> H.mRI("play", "outlook")
-    res2: Double = -0.4151614738129006
+scala> H.mRI("play", "outlook")
+res2: Double = -0.4151614738129006
+```
 
 ## Disclaimer
 
